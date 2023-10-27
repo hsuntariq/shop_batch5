@@ -23,4 +23,10 @@ class productController extends Controller
         Products::create($formFields);
         return back()->with('message','Data Inserted Successfully');
     }
+
+    public function getData(){
+            $products = Products::all();
+            return view('welcome',compact('products'));
+    }
+
 }

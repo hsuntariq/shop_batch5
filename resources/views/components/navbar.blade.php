@@ -11,6 +11,11 @@
                     <a class="text-white nav-link" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="text-white nav-link" aria-current="page" href="#">
+                        Hello {{auth()->user()->username}}
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="text-white nav-link" href="#">SignUp</a>
                 </li>
                 <li class="nav-item">

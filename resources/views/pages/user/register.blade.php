@@ -1,4 +1,5 @@
 <x-layout>
+    <x-flash/>
     <x-navbar/>
     <div class="row container mx-auto mt-4 mt-4 col-md-8">
         <h1 class="display-4 text-center text-capitalize">
@@ -9,6 +10,7 @@
                 
             </h1>
             <form action="/register" method="POST" enctype="multipart/form-data">
+                @csrf
                 <label for="">Username</label>
                 <input type="text" name="username" class="form-control">
                 <label for="">Email</label>

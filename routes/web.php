@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\userController;
+use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +22,11 @@ Route::view('/','welcome');
 Route::view('/add-product','pages.admin.addProduct');
 Route::post('/insert-prod',[productController::class,'insertData']);
 Route::view('/register','pages.user.register');
+Route::post('/register',[userController::class,'register']);
+Route::get('/',[productController::class,'getData']);
+Route::get('/view-product/{id}',function($id){
+    $item = Products::find($id);
+    return view('pages.user.single',compact('item'));
+});
+
+Route::post('/add-to-cart',[cartController::class,'addToCart']);
