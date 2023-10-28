@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\cartController;
+use App\Http\Controllers\orderController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\userController;
 use App\Models\Products;
@@ -21,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::view('/','welcome');
 Route::view('/add-product','pages.admin.addProduct');
 Route::post('/insert-prod',[productController::class,'insertData']);
-Route::view('/register','pages.user.register');
+Route::view('/register','pages.user.register')->name('register');
 Route::post('/register',[userController::class,'register']);
 Route::get('/',[productController::class,'getData']);
 Route::get('/view-product/{id}',function($id){
@@ -29,4 +30,13 @@ Route::get('/view-product/{id}',function($id){
     return view('pages.user.single',compact('item'));
 });
 
-Route::post('/add-to-cart',[cartController::class,'addToCart']);
+Route::post('/add-to-cart',[cartController::class,'addToCart'])->middleware('auth');
+Route::view('/login','pages.user.login')->name('login');
+Route::post('/logout',[userController::class,'logout']);
+
+Route::post('/login',[userController::class,'login']);
+Route::view('/cart','pages.user.cart');
+Route::get('/cart',[cartController::class,'showCart']);
+Route::post('/delete/{id}',[cartController::class,'deleteItem']);
+Route::view('/orders','pages.admin.viewOrders');
+Route::post('/order',[orderController::class,'createOrders']);

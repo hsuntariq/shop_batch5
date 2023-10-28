@@ -10,17 +10,23 @@
                 <li class="nav-item">
                     <a class="text-white nav-link" aria-current="page" href="#">Home</a>
                 </li>
+                @auth
+                    
                 <li class="nav-item">
                     <a class="text-white nav-link" aria-current="page" href="#">
                         Hello {{auth()->user()->username}}
                     </a>
                 </li>
+                @endauth
+                @guest
+                    
                 <li class="nav-item">
                     <a class="text-white nav-link" href="#">SignUp</a>
                 </li>
                 <li class="nav-item">
                     <a class="text-white nav-link" href="#">Login</a>
                 </li>
+                @endguest
                 
                 <li class="nav-item dropdown">
                     <a class="text-white nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -42,7 +48,15 @@
                 <li class="nav-item">
                     <a class="text-white nav-link" href="#">Add Categories</a>
                 </li>
-                
+                @auth
+                    
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button class="btn btn-danger">
+                        logout
+                    </button>
+                </form>
+                @endauth
             </ul>
             
         </div>

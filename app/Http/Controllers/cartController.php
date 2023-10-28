@@ -25,9 +25,16 @@ class cartController extends Controller
 }
 
     public function showCart(){
-        $user = auth()->user()->id;
-        $cart = Cart::where('user_id',$user)->get();
-        return view('pages.user.cart',compact('cart'));
+        // get the id of current logged in user
+        $_id = auth()->user()->id;
+        $my_cart = Cart::where('user_id',$_id)->get(); 
+        return view('pages.user.cart',compact('my_cart'));
+    }
+
+    public function deleteItem($id){
+       $cart = Cart::find($id);
+       $cart->delete();
+       return back();
     }
 
 

@@ -9,21 +9,19 @@
             <h1 class="display-4 text-center">
                 
             </h1>
-            <form action="/register" method="POST" enctype="multipart/form-data">
+            <form action="/login" method="POST" enctype="multipart/form-data">
                 @csrf
-                <label for="">Username</label>
-                <input type="text" name="username" class="form-control">
+                
                 <label for="">Email</label>
                 <input type="email" name="email" class="form-control">
                 <label for="">Password</label>
                 <input type="text" name="password" class="form-control">
-                <label for="">Password</label>
-                <input type="file" name="image" class="form-control">
+                <x-bottom-flash/>
                 <button class="btn my-2 btn-dark w-100">
-                    Register
+                    Login
                 </button>
                 <span class="text-secondary">
-                    Already a user ? <a class="text-primary text-decoration-none" href="/login">Log In</a>
+                    Create an account ? <a class="text-primary text-decoration-none" href="/register">Register</a>
                 </span>
             </form>
         </div>
